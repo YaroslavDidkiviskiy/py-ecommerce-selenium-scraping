@@ -84,11 +84,11 @@ def scrape_page(driver, url, filename, has_pagination=False):
 
         try:
             reviews_text = thumb.find_element(By.CSS_SELECTOR, ".ratings .pull-right").text
-            num_reviews = int(reviews_text.split()[0])
+            num_of_reviews = int(reviews_text.split()[0])
         except (NoSuchElementException, IndexError, ValueError):
-            num_reviews = 0
+            num_of_reviews = 0
 
-        products.append(Product(title, description, price, rating, num_reviews))
+        products.append(Product(title, description, price, rating, num_of_reviews))
 
     with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
